@@ -1,14 +1,21 @@
-# Test czy liczba jest pierwsza
-from math import sqrt
+#Test czy liczba jest pierwsza
+from math import isqrt
 
 def isPrime(n):
-    if n == 2:
-        return True
     if n <= 1:
         return False
-    for i in range(3, int(sqrt(n))+1, 2):
+    if n == 2 or n == 3:
+        return True
+
+    i = 5
+    while i <= isqrt(n):
         if n%i == 0:
             return False
+        i+=2
+        if n%i == 0:
+            return False
+        i+=4
+
     return True
 #===========================================================
 if __name__ == "__main__":
