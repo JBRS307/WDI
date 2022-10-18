@@ -1,21 +1,17 @@
 # Wypisz podzielniki liczby
+
+from math import isqrt
+
 def findDiv(n):
-    res = [1]
-    if n%2 == 0:
-        res.append(2)
-        for i in range(3, n//2+1):
-            if n%i == 0:
-                res.append(i)
-        res.append(n)
-        return res
-    else:
-        for i in range(3, n//2+1, 2):
-            if n%i == 0:
-                res.append(i)
-        res.append(n)
-        return res
+    for i in range(1, isqrt(n)+1):
+        if n%i == 0:
+            print(i, end=" ")
+            j = n//i
+            if j != i:
+                print(j, end=" ")
+    print()
 #=============================================
 if __name__ == "__main__":
-    n = int(input().strip())
-    print(*findDiv(n))
+    n = int(input())
+    findDiv(n)
     
