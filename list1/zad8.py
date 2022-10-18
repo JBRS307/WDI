@@ -2,10 +2,11 @@
 from math import isqrt
 
 def isPrime(n):
-    if n <= 1:
-        return False
     if n == 2 or n == 3:
         return True
+    
+    if n%2 == 0 or n%3 == 0 or n <= 1:
+        return False
 
     i = 5
     while i <= isqrt(n):
@@ -19,5 +20,5 @@ def isPrime(n):
     return True
 #===========================================================
 if __name__ == "__main__":
-    n = int(input().strip())
+    n = int(input())
     print(isPrime(n))
