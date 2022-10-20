@@ -1,3 +1,5 @@
+#Rozłożenie na iloczyn dwóch liczb o najmniejszej różnicy
+
 from math import isqrt
 
 def divs(n):

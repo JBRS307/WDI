@@ -1,3 +1,5 @@
+#Sprawdzenie czy n jest wielokrotnością dowolnego wyrazu danego ciągu
+
 def check(n):
     if n%2 == 0:
         return True
