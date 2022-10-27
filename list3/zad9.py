@@ -3,22 +3,17 @@
 from random import randrange
 
 def longestSubSeqUp(arr, n):
-    start = 0
-    end = 0
-    length = 0
+    length = 1
+    maxLen = 0
 
     for i in range(1, n):
         if arr[i] > arr[i-1]:
-            end += 1
+            length += 1
         else:
-            if (end-start)+1 > length:
-                length = (end-start)+1
-            start = end = i
-    
-    if (end-start)+1 > length:
-        length = (end-start)+1
+            maxLen = max(maxLen, length)
+            length = 1
 
-    return length
+    return max(maxLen, length)
 #=====================================================
 if __name__ == "__main__":
     n = int(input("Rozmiar: "))

@@ -3,32 +3,26 @@
 from random import randrange
 
 def longestSubSeqAr(arr, n):
-    start = end = length = 0
-    dif = 0
-
-    for i in range(1, n):
-        if start == end:
-            dif = arr[i] - arr[i-1]
-            end += 1
+    maxLen = 1
+    length = 2
+    
+    dif = arr[1] - arr[0]
+    for i in range(2, n):
+        if arr[i] - arr[i-1] == dif:
+            length += 1
         else:
-            if arr[i] - arr[i-1] == dif:
-                end += 1
-            else:
-                if (end-start)+1 > length:
-                    length = (end-start)+1
-                start = end = i
+            maxLen = max(maxLen, length)
+            length = 2
+            dif = arr[i] - arr[i-1]
     
-    if (end-start)+1 > length:
-        length = (end-start)+1
-    
-    return length
+    return max(maxLen, length)
 #=====================================================
 if __name__ == "__main__":
     n = int(input("Rozmiar: "))
-    # k = int(input("Zakres: "))
+    k = int(input("Zakres: "))
 
-    # arr = [randrange(1, k+1) for _ in range(n)]
-    arr = [6, 3, 3, 2, 5, 6, 5, 7, 1, 6]
+    arr = [randrange(1, k+1) for _ in range(n)]
+    # arr = [2, 1, 2, 3, 4, 3]
     
     print(*arr)
     print(longestSubSeqAr(arr, n))
