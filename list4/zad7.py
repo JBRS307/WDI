@@ -1,10 +1,9 @@
-#Wypisz wszystkie liczby z kwadratu, rosnąco
-
 from random import randrange
 
 
 def create_arr(n, k):
     arr = [[randrange(1, k+1) for _ in range(n)] for _ in range(n)]
+
     for i in range(n):
         arr[i].sort()
     
@@ -16,21 +15,27 @@ def print_arr(arr):
         print(line)
 #-----------------------------------------------------
 
-def task(arr, n, k):
+def merge_lines(arr, n):
     res = [0]*(n*n)
-    temp = [0]*(k+1)
 
-    for line in arr:
-        for num in line:
-            temp[num] += 1
-    
     res_i = 0
-    for i in range(len(temp)):
-        if temp[i] != 0:
-            res[res_i] = i
+    for _ in range(n*n):
+        min_elem = float('inf')
+        min_index = 0
+        for i in range(n):
+            try:
+                if arr[i][0] < min_elem:
+                    min_elem = arr[i][0]
+                    min_index = i
+            except:
+                pass
+        
+        if min_elem not in res:
+            res[res_i] = min_elem
             res_i += 1
+        del arr[min_index][0]
     
-    return res
+    return res            
 #=====================================================
 
 if __name__ == "__main__":
@@ -38,5 +43,5 @@ if __name__ == "__main__":
 
     arr = create_arr(n, k)
     print_arr(arr)
-    print()
-    print(task(arr, n, k))
+
+    print(merge_lines(arr, n))
