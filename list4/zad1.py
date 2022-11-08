@@ -2,28 +2,27 @@
 #naturalnymi po spirali
 
 def fill(n):
-    arr = [[0 for i in range(n)] for j in range(n)]
+    arr = [[0]*n for _ in range(n)]
 
     steps = ((0, 1), (1, 0), (0, -1), (-1, 0))
 
     num = 1
-    ver = hor = 0
+    row = col = 0
     n -= 1
     while n > 0:
         for step in steps:
-            s_ver, s_hor = step
-            for i in range(n):
-                arr[ver][hor] = num
-                ver += s_ver
-                hor += s_hor
+            for _ in range(n):
+                arr[row][col] = num
+                row += step[0]
+                col+= step[1]
                 num += 1
         
         n -= 2
-        ver += 1
-        hor += 1
+        row += 1
+        col += 1
     
     if n == 0:
-        arr[ver][hor] = num
+        arr[row][col] = num
 
     return arr
 #-----------------------------------------------------
