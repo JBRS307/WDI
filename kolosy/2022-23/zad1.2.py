@@ -31,14 +31,14 @@ def prime_factors_check(n):
                 n //= i
         i += 1
     
-    return True if count == 2 else False
+    return count == 2
 #-----------------------------------------------------
 
 def find_square(arr, leng):
     n = 0
     min_square = [(None, None), float('inf')] #Współrzędne punktu A i rozmiar kwadratu
     while n < leng:
-        for i in range(leng-n):
+        for i in range(leng):
             a = arr[i][n]
             for j in range(1, min(leng-n, leng-i)):
                 b = arr[i][n+j]

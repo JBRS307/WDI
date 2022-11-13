@@ -12,7 +12,7 @@ def print_arr(arr):
 def find_square(arr, leng, k):
     n = 0
     while n < leng:
-        for i in range(leng-n):
+        for i in range(leng):
             a = arr[i][n]
             for j in range(2, min(leng-i, leng-n), 2):
                 b = arr[i][n+j]
