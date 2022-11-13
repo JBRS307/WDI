@@ -35,7 +35,7 @@ def check_arr(arr):
     mask = [False, False, False, True] #Jest 15 różnych podzbiorów (wyłączamy zbiór pusty)
 
     max_seq = 0
-    for digs in range(14):
+    for _ in range(14): #Tyle musi być zmian między maskami
         seq = 0
         for num in arr:
             if num == mask:
