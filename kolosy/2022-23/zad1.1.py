@@ -29,7 +29,7 @@ def find_substrs(arr):
         min_end = min(min_end, arr[end])
         max_beg = max(max_beg, arr[beg])
     
-    return True if max_beg > min_end else False
+    return max_beg > min_end
 #=====================================================
 
 if __name__ == "__main__":
