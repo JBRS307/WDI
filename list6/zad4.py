@@ -9,9 +9,12 @@ def print_board(board):
 #-----------------------------------------------------
 
 def fill_knight(board, leng, x, y, n = 1):
-    moves = ((+2, +1), (+2, -1), (-2, +1), (-2, -1),
-             (+1, +2), (+1, -2), (-1, +2), (-1, -2))
-    
+    # moves = ((+2, +1), (+2, -1), (-2, +1), (-2, -1),
+    #          (+1, +2), (+1, -2), (-1, +2), (-1, -2))
+
+    ver = [2, 2, -2, -2, 1, 1, -1, -1]
+    hor = [1, -1, 1, -1, 2, -2, 2, -2]
+
     if board[x][y] == 0:
         board[x][y] = n
     else:
@@ -20,12 +23,17 @@ def fill_knight(board, leng, x, y, n = 1):
     if n == leng*leng:
         return True
             
-    i = 0
-    for move in moves:
-        if x+move[0] >= 0 and x+move[0] < leng and y+move[1] >= 0 and y+move[1] < leng:
-                stop = fill_knight(board, leng, x+move[0], y+move[1], n+1)
-                if stop:
-                    return True
+    # for move in moves:
+    #     if x+move[0] >= 0 and x+move[0] < leng and y+move[1] >= 0 and y+move[1] < leng:
+    #             stop = fill_knight(board, leng, x+move[0], y+move[1], n+1)
+    #             if stop:
+    #                 return True
+
+    for i in range(8):
+        if 0 <= x+ver[i] < len(board) and 0 <= y+hor[i] < len(board):
+            stop = fill_knight(board, leng, x+ver[i], y+hor[i], n+1)
+            if stop:
+                return True
     
     board[x][y] = 0
 
