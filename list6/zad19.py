@@ -46,6 +46,8 @@ def find_route(row, col, dest_row, dest_col, been_on):
                             if find_route(new_row, new_col, dest_row, dest_col, been_on):
                                 return True
     
+    been_on[row][col] = False
+    
     return False
 #=====================================================
 
@@ -57,6 +59,11 @@ if __name__ == "__main__":
     print_arr()
     row, col = map(int, input('\n').strip().split())
     # dest_row, dest_col = map(int, input().strip().split())
+
+    # print("Lewy gorny:", find_route(row, col, 0, 0))
+    # print("Prawy gorny:", find_route(row, col, 0, 7))
+    # print("Prawy dolny:", find_route(row, col, 7, 7))
+    # print("Lewy dolny:", find_route(row, col, 7, 0))
 
 
     print("Lewy gorny:", find_route(row, col, 0, 0, [[False]*8 for _ in range(8)]))

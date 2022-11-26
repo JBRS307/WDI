@@ -46,6 +46,8 @@ def find_route(row, col, been_on=[[False]*8 for _ in range(8)]):
                             if find_route(new_row, new_col, been_on):
                                 return True
     
+    been_on[row][col] = False
+    
     return False
 #=====================================================
 
