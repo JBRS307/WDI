@@ -5,6 +5,7 @@
 
 from random import randrange
 from os import system
+from math import log10
 
 
 arr = [[randrange(1, 101) for _ in range(8)] for _ in range(8)]
@@ -20,10 +21,7 @@ def print_arr():
 #=====================================================
 
 def first(n):
-    while n >= 10:
-        n //= 10
-    
-    return n
+    return n//(10**int(log10(n)))
 #-----------------------------------------------------
 def find_route(row, col, dest_row, dest_col, been_on):
     global arr
