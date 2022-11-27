@@ -24,22 +24,22 @@ def is_prime(n):
     return True
 #=====================================================
 
-def build_num(leng, arr1, arr2, num1, num2, i1=0, i2=0, res_num=0):
+def build_num(leng, arr1, arr2, num1, i1=0, i2=0, res_num=0):
     global counter
     if num1 and i1 < len(arr1):
         res_num = 10*res_num + arr1[i1]
         if res_num != 0 and int(log10(res_num))+1 == leng and is_prime(res_num):
             counter += 1
             return
-        build_num(leng, arr1, arr2, True, False, i1+1, i2, res_num)
-        build_num(leng, arr1, arr2, False, True, i1+1, i2, res_num)
-    elif num2 and i2 < len(arr2):
+        build_num(leng, arr1, arr2, True, i1+1, i2, res_num)
+        build_num(leng, arr1, arr2, False, i1+1, i2, res_num)
+    elif not num1 and i2 < len(arr2):
         res_num = 10*res_num + arr2[i2]
         if res_num != 0 and int(log10(res_num))+1 == leng and is_prime(res_num):
             counter += 1
             return
-        build_num(leng, arr1, arr2, True, False, i1, i2+1, res_num)
-        build_num(leng, arr1, arr2, False, True, i1, i2+1, res_num)
+        build_num(leng, arr1, arr2, True, i1, i2+1, res_num)
+        build_num(leng, arr1, arr2, False, i1, i2+1, res_num)
 #-----------------------------------------------------
 
 def start(num1, num2):
@@ -58,8 +58,8 @@ def start(num1, num2):
         arr2[i] = num2%10
         num2 //= 10
     
-    build_num(leng1+leng2, arr1, arr2, True, False)
-    build_num(leng1+leng2, arr1, arr2, False, True)
+    build_num(leng1+leng2, arr1, arr2, True)
+    build_num(leng1+leng2, arr1, arr2, False)
 #=====================================================
 
 if __name__ == "__main__":
