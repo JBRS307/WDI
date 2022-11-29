@@ -12,13 +12,13 @@ def is_prime(n):
         if n%i == 0 or n%(i+2) == 0:
             return False
     return True
+#-----------------------------------------------------
 
 def to_int(arr, start, end):
     res = 0
-    n = 0
-    for i in range(end, start-1, -1):
-        res += arr[i]*(2**n)
-        n += 1
+    for i in range(start, end+1):
+        res <<= 1
+        res += arr[i]
 
     # return res
     return is_prime(res)
@@ -38,7 +38,7 @@ def check_cut(arr, i=0):
 #=====================================================
 
 if __name__ == "__main__":
+    system("clear")
     # print(to_int([1, 0, 1], 0, 2))
-
     print(check_cut([1, 1, 1, 0, 1, 1]))
     print(check_cut([1, 1, 0, 1, 0, 0]))
