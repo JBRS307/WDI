@@ -14,7 +14,7 @@ def is_prime(n):
     return True
 #-----------------------------------------------------
 
-def divide(num, pieces = 0, digits = 0):
+def divide(num, pieces = 0):
     if num == 0:
         if is_prime(pieces):
             return True
@@ -25,7 +25,7 @@ def divide(num, pieces = 0, digits = 0):
     for i in range(1, leng+1):
         piece = num // 10**(leng-i)
         if is_prime(piece):
-            if divide(num%(10**(leng-i)), pieces+1, digits+i):
+            if divide(num%(10**(leng-i)), pieces+1):
                 return True
     
     return False
