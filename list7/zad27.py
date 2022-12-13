@@ -7,11 +7,9 @@ class Node:
         self.next = next
 
 class LinkedList:
-    def __init__(self, headval=None):
-        if headval is None:
-            self.head = headval
-        else:
-            self.head = Node(headval)
+    def __init__(self):
+        self.head = None
+        self.tail = self.head
     
     def print(self):
         elem = self.head
@@ -22,15 +20,12 @@ class LinkedList:
     
     def append(self, data):
         new_node = Node(data)
-        elem = self.head
-        if elem is None:
-            self.head = new_node
+        if self.head is None:
+            self.head = self.tail = new_node
             return
 
-        while elem.next is not None:
-            elem = elem.next
-        
-        elem.next = new_node
+        self.tail.next = new_node
+        self.tail = new_node
 #=====================================================
 
 def merge_lists(elem1, elem2):
