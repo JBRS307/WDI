@@ -27,10 +27,11 @@ def rook_rec(arr, leng, rook, row, col, moves_made=0):
         return moves_made
     
     for i in range(1, leng):
-        if 0 <= col+(i*(-1)**rook) < leng:
-            if gcf(arr[row][col], arr[row][col+(i*(-1)**rook)]) == 1:
-                moves = rook_rec(arr, leng, rook, row, col+(i*(-1)**rook), moves_made+1)
-                min_moves = min(min_moves, moves)
+        if not (0 <= col+(i*(-1)**rook) < leng):
+            break
+        if gcf(arr[row][col], arr[row][col+(i*(-1)**rook)]) == 1:
+            moves = rook_rec(arr, leng, rook, row, col+(i*(-1)**rook), moves_made+1)
+            min_moves = min(min_moves, moves)
     
     for i in range(1, leng-row):
         if gcf(arr[row][col], arr[row+i][col]) == 1:
