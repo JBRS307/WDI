@@ -20,24 +20,35 @@ def find_rooks(arr, leng, row, col):
 def move(arr):
     leng = len(arr)
 
+    checked_rows = [-1]*leng
+    checked_cols = [-1]*leng
+
+    rows_i = 0
+    cols_i = 0
+    for i in range(leng):
+        for j in range(leng):
+            if arr[i][j]:
+                if i not in checked_rows:
+                    checked_rows[rows_i] = i
+                    rows_i += 1
+                if j not in checked_cols:
+                    checked_cols[cols_i] = j
+                    cols_i += 1
+
     free_row = -1
     free_col = -1
 
-    for row in range(leng):
-        if True in arr[row]:
-            continue
-        free_row = row
-        break
-    
-
-    for col in range(leng):
-        for row in range(leng):
-            if arr[row][col]:
+    if -1 not in checked_rows:
+        for i in range(leng):
+            if i not in checked_rows:
+                free_row = i
                 break
-        else:
-            free_col = col
-            break
     
+    if -1 not in checked_cols:
+        for i in range(leng):
+            if i not in checked_cols:
+                free_col = i
+                break
 
     for i in range(leng):
         for j in range(leng):
