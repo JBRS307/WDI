@@ -4,13 +4,13 @@ from os import system
 def find_rooks(arr, leng, row, col):
     in_row = False
     in_col = False
-    for i in range(col+1, leng-col):
-        if arr[row][col+i]:
+    for i in range(leng):
+        if arr[row][i] and col != i:
             in_row = True
             break
 
-    for i in range(row+1, leng-row):
-        if arr[row+i][col]:
+    for i in range(row, leng):
+        if arr[i][col] and i != row:
             in_col = True
             break
     
