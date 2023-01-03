@@ -5,23 +5,16 @@ class Node:
     def __init__(self, value=None):
         self.value = value
         self.next = None
-#=====================================================
-
-def reverse_list(elem):
-    if elem is None:
-        return None
     
-    head = elem
-    next_elem = head.next
-
-    if next_elem is None:
-        return head
-    
-    result = reverse_list(next_elem.next)
-    next_elem.next = head
-
-    return result
-    
+    def reverse(self):
+        if self.next is None:
+            return self
+        
+        result = self.next.reverse()
+        self.next.next = self
+        self.next = None
+        
+        return result
 #=====================================================
 
 if __name__ == "__main__":

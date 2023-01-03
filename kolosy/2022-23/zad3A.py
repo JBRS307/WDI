@@ -1,4 +1,5 @@
 from os import system
+#Spaghetti, teraz już tego nie rozszyfruję
 
 
 def make_board(leng, pawns):
